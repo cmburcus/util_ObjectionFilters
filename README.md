@@ -6,6 +6,19 @@ This utility is used to add filters to an Objection query builder
 
 [Objection ORM](https://vincit.github.io/objection.js/) is added as a dependency in this project as certain functionalities are required.
 
+**Table of contents**
+* [Usage](#usage)
+  * [addSelect](#select-specific-columns)
+  * [addFilter](#add-filter-clauses)
+  * [addOrderBy](#order-results)
+  * [addPagination](#paginate-results)
+* [Docker](#docker)
+* [Development requirements](#requirements-for-evelopment)
+* [Setup](#setup)
+* [Commands](#commands)
+* [Testing](#Testing)
+* [Contributions](#contributions)
+
 ---
 
 ## Usage
@@ -30,9 +43,7 @@ Use the following functions as required:
 
 > If the parameter are not a string or are not the right format, an error will be thrown (exception for pagination where numbers are allowed)
 
----
-
-**Select specific columns**
+#### Select specific columns
 
 Function: `addSelect(queryBuilder, selectString)`
 
@@ -40,9 +51,7 @@ Appends a select query to the query builder. It assumes the string is comma sepa
 
 Example of properly formatted string: `'column_one,column_two'`
 
----
-
-**Add filter clauses**
+#### Add filter clauses
 
 Function: `addFilter(queryBuilder, filterString)`
 
@@ -79,9 +88,7 @@ _Other notes_:
 * `column` must be a string
 * `condition` will be ignored if `range` is defined. Just use the conditional range if you need to (eg. orNotBetween)
 
----
-
-**Order results**
+#### Order results
 
 Function: `addOrderBy(queryBuilder, orderByString)`
 
@@ -93,9 +100,7 @@ Examples of properly formatted string:
   * `'column_one,ASC'` or `'column_one,asc'` - Returns ascending order
   * `'column_one,DESC'` or `'column_one,desc'` - Returns descending order
 
----
-
-**Paginate results**
+#### Paginate results
 
 Function: `addPagination(queryBuilder, page, pageSize)`
 
@@ -106,13 +111,13 @@ Examples:
  * `addPagination(queryBuilder, 1, 50);`
  * `addPagination(queryBuilder, '1', '50');`
 
----
-
 ## Docker
 
 To make development and deployment easy, this service makes use of [Docker and Docker Compose](https://docs.docker.com/).
 
----
+**Containers**
+ * node:9.11.1
+   * name: objection_filters_util_node
 
 ## Requirements for Development
 
@@ -123,10 +128,6 @@ Any other system dependencies come already set up using Docker so you do not nee
  * Docker >= 18.03
  * Docker Compose >= 1.21
 
-### Containers
- * node:9.11.1
-   * name: objection_filters_util_node
-
 ## Setup
 
 ```
@@ -134,8 +135,6 @@ git clone git@github.com:cmburcus/util_ObjectionFilters.git
 
 cd util_ObjectionFilters
 ```
-
----
 
 ## Commands
 
@@ -238,8 +237,6 @@ When you're done, you can stop the testing environment
 `make migrate-database`
 
 Migrates the database (The sqlite database is only used for testing purposes)
-
----
 
 ## Contributions
 
