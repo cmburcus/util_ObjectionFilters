@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  node:
+    build:
+      context: .
+    environment:
+      - NODE_ENV=testing
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /database
+    secrets:
+      - host_ssh_key
+    stdin_open: true
+    tty: true
+
+secrets:
+  host_ssh_key:
+    file: ~/.ssh/id_rsa

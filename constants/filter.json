@@ -1,0 +1,30 @@
+{
+	"operators": {
+		"gt": ">",
+		"gte": ">=",
+		"lt": "<",
+		"lte": "<=",
+		"ne": "!=",
+		"eq": "=",
+		"like": "like"
+  },
+  "order": {
+    "asc": "ASC",
+    "desc": "DESC",
+    "default": "ASC"
+  },
+  "conditions": {
+    "and": "andWhere",
+    "or": "orWhere"
+  },
+  "rangeConditions": {
+    "in": "whereIn",
+    "orIn": "orWhereIn",
+    "notIn": "whereNotIn",
+    "orNotIn": "orWhereNotIn",
+    "between": "whereBetween",
+    "orBetween": "orWhereBetween",
+    "notBetween": "whereNotBetween",
+    "orNotBetween": "orWhereNotBetween"
+  }
+}

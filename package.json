@@ -1,0 +1,27 @@
+{
+  "name": "util_errors",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "9.11.1"
+  },
+  "scripts": {
+    "test": "DEBUG=myapp:* && mocha -c -t 10000 --recursive --exit",
+    "format": "eslint --quiet --report-unused-disable-directives --fix '**/*.js' || true"
+  },
+  "dependencies": {
+    "error-util": "git+ssh://git@github.com:cmburcus/util_Errors.git",
+    "objection": "1.1.10"
+  },
+  "devDependencies": {
+    "chai": "4.1.2",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-prettier": "2.6.0",
+    "knex": "0.14.6",
+    "mocha": "5.2.0",
+    "prettier": "1.13.0",
+    "sqlite3": "^4.0.2"
+  }
+}
