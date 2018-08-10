@@ -7,7 +7,6 @@ This utility is used to add filters to an Objection query builder
 [Objection ORM](https://vincit.github.io/objection.js/) is added as a dependency in this project as certain functionalities are required.
 
 ---
----
 
 ## Usage
 
@@ -108,7 +107,6 @@ Examples:
  * `addPagination(queryBuilder, '1', '50');`
 
 ---
----
 
 ## Docker
 
@@ -137,7 +135,6 @@ git clone git@github.com:cmburcus/util_ObjectionFilters.git
 cd util_ObjectionFilters
 ```
 
----
 ---
 
 ## Commands
@@ -242,7 +239,6 @@ When you're done, you can stop the testing environment
 
 Migrates the database (The sqlite database is only used for testing purposes)
 
----
 ---
 
 ## Contributions
