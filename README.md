@@ -26,7 +26,7 @@ This utility is used to add filters to an Objection query builder
 In your `package.json`, add the following dependency:
 
 ```
-"objection-filters-util": "git+ssh//git@github.com:cmburcus/util_ObjectionFilters.git"
+"objection-filters-util": "git+ssh://git@github.com:cmburcus/util_ObjectionFilters.git"
 ```
 
 Then install your dependencies with `npm` or `yarn`
