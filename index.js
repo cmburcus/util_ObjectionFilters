@@ -209,11 +209,11 @@ module.exports = {
     let orderDirection = order.default;
 
     if (querySplit.length === 2) {
-      const userQueryDirection = querySplit[1].toUpperCase();
+      orderDirection = querySplit[1].toUpperCase();
 
-      // If the order direction is incorrect, we'll just use the default
-      if (userQueryDirection === order.asc || userQueryDirection === order.desc) {
-        orderDirection = userQueryDirection;
+      // If the order direction is incorrect, we'll throw an error
+      if (orderDirection !== order.asc && orderDirection !== order.desc) {
+        errorUtil.throwInvalidArgumentError();
       }
     }
 

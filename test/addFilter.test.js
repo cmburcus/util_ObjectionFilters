@@ -13,6 +13,19 @@ const Model = require('../database/Model');
 Model.knex(knex);
 
 describe('TESTING: addFilter', () => {
+  it('it should return the query builder if the filter is not defined', () => {
+    let result = null;
+
+    try {
+      result = addFilter(Model.query());
+    } catch (error) {
+      result = error;
+    }
+
+    expect(result).to.be.an('object');
+    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+  });
+
   it('it should fail if filter is not valid JSON', async () => {
     let result = null;
 

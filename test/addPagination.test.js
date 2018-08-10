@@ -13,6 +13,19 @@ const Model = require('../database/Model');
 Model.knex(knex);
 
 describe('TESTING: addPagination', () => {
+  it('it should return the query builder if the page and pageSize are not defined', async () => {
+    let result = null;
+
+    try {
+      result = addPagination(Model.query());
+    } catch (error) {
+      result = error;
+    }
+
+    expect(result).to.be.an('object');
+    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+  });
+
   it('it should paginate the operation if params are numbers', async () => {
     let result = null;
 
