@@ -39,8 +39,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should fail if filter is specified but is null', async () => {
@@ -54,8 +54,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should fail if filter is specified but is a number', async () => {
@@ -69,8 +69,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should fail if filter is specified but is an array', async () => {
@@ -84,8 +84,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should fail if filter is specified but is an object', async () => {
@@ -99,8 +99,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should fail if filter is not a json array', async () => {
@@ -119,8 +119,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter');
   });
 
   it('it should add filter operation as equals if filter is specified but no operator is passed', async () => {
@@ -349,8 +349,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter[0].operator');
   });
 
   it('it should fail if attempting like on a non string column', async () => {
@@ -372,8 +372,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter[0].value');
   });
 
   it('it should allow for multiple filters to be specified', async () => {
@@ -441,8 +441,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter[0].column');
   });
 
   it('it should fail if value is not specified', async () => {
@@ -462,8 +462,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter[0].value');
   });
 
   it('it should allow "and" condition', async () => {
@@ -619,8 +619,8 @@ describe('TESTING: addFilter', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('filter[0].value');
   });
 
   it('it should allow "orIn" condition', async () => {

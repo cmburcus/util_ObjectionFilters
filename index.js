@@ -21,10 +21,11 @@ const raw = require('objection').raw;
  * @param {string} column - Database column
  * @param {string} operator - Operator to be used
  * @param {string} value - Value to check against
+ * @param {number} conditionIndex - Used to construct error message string
  */
-function getSanitizedCondtion(column, operator, value) {
+function getSanitizedCondtion(column, operator, value, conditionIndex) {
   if (operator === operators.like && typeof value !== 'string') {
-    errorUtil.throwInvalidArgumentError();
+    errorUtil.throwInvalidArgumentError(`filter[${conditionIndex}].value`);
   }
 
   if (operator === operators.like) {
@@ -36,32 +37,35 @@ function getSanitizedCondtion(column, operator, value) {
 
 /**
  * Given the different url parameters that can be passed as filters, this function
- * will determine if the combination used is valid
+ * will determine if the combination used is valid.
  *
  * @param {string} column - Required. column name from the database
  * @param {mixed} value - Required. Could be any value
  * @param {string|null} operator - Optional. URL string passed. If not present, equal will be used
  * @param {string|null} databaseOperator - Required with operator. Operator to be used in the database condition
  * @param {string|null} range - Optional. Range operation to perform. Value must be an array if this is used
+ * @param {number} conditionIndex - Used to construct error message string
+ *
+ * @returns {string|null} String if an invalid filter is found or null if everything is valid
  */
-function areFilterArgumentsValid(column, value, operator, databaseOperator, range) {
+function getInvalidFilterString(column, value, operator, databaseOperator, range, conditionIndex) {
   if (typeof column !== 'string') {
-    return false;
+    return `filter[${conditionIndex}].column`;
   }
 
   if (typeof value === 'undefined') {
-    return false;
+    return `filter[${conditionIndex}].value`;
   }
 
   if (typeof operator !== 'undefined' && typeof databaseOperator === 'undefined') {
-    return false;
+    return `filter[${conditionIndex}].operator`;
   }
 
   if (typeof range !== 'undefined' && !Array.isArray(value)) {
-    return false;
+    return `filter[${conditionIndex}].value`;
   }
 
-  return true;
+  return null;
 }
 
 /**
@@ -80,14 +84,14 @@ module.exports = {
     }
 
     if (typeof selectString !== 'string') {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('select');
     }
 
     // We need at least one column name
     const querySplit = selectString.trim().split(',').filter((column) => (column.length > 0));
 
     if (querySplit.length === 0) {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('select');
     }
 
     return queryBuilder.select(selectString.split(','));
@@ -114,21 +118,17 @@ module.exports = {
       return queryBuilder;
     }
 
-    if (typeof filterString !== 'string') {
-      errorUtil.throwInvalidArgumentError();
-    }
-
     let filters = null;
 
     try {
       filters = JSON.parse(filterString);
     } catch (error) {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('filter');
     }
 
     // The parsed json has to be an array
     if (!Array.isArray(filters)) {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('filter');
     }
 
     for (let index = 0; index < filters.length; index++) {
@@ -140,16 +140,17 @@ module.exports = {
       // Also making sure that if an operator was supplied it is valid
       typeof filters[index].operator !== 'undefined' && typeof operator === 'undefined';
 
-      if (
-        !areFilterArgumentsValid(
-          filters[index].column,
+      const filterError = getInvalidFilterString(
+        filters[index].column,
           filters[index].value,
           filters[index].operator,
           operator,
-          range
-        )
-      ) {
-        errorUtil.throwInvalidArgumentError();
+          range,
+          index
+      );
+
+      if (filterError) {
+        errorUtil.throwInvalidArgumentError(filterError);
       }
 
       // Function to append to the query. By default it will be 'where'
@@ -164,7 +165,8 @@ module.exports = {
       const sanitizedValues = getSanitizedCondtion(
         filters[index].column,
         operator,
-        filters[index].value
+        filters[index].value,
+        index
       );
 
       if (typeof operator === 'undefined') {
@@ -195,14 +197,14 @@ module.exports = {
     }
 
     if (typeof orderByString !== 'string') {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('order');
     }
 
     // We need at least the column name
     const querySplit = orderByString.split(',');
 
     if (querySplit.length === 0 || querySplit[0].trim() === '') {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('order');
     }
 
     // Checking for valid order direction if one was passed
@@ -213,7 +215,7 @@ module.exports = {
 
       // If the order direction is incorrect, we'll throw an error
       if (orderDirection !== order.asc && orderDirection !== order.desc) {
-        errorUtil.throwInvalidArgumentError();
+        errorUtil.throwInvalidArgumentError('order');
       }
     }
 
@@ -236,7 +238,7 @@ module.exports = {
     const isPageSizeInvalid = (typeof pageSize !== 'number' && typeof pageSize !== 'string') || pageSize <= 0;
 
     if (isPageInvalid || isPageSizeInvalid) {
-      errorUtil.throwInvalidArgumentError();
+      errorUtil.throwInvalidArgumentError('pagination');
     }
 
     // Page - 1 as objection page starts at 0

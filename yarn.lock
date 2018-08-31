@@ -688,9 +688,9 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
-"error-util@git+ssh://git@github.com:cmburcus/util_Errors.git":
+"error-util@git+ssh://git@github.com:cmburcus/util_Errors.git#master":
   version "0.0.0"
-  resolved "git+ssh://git@github.com:cmburcus/util_Errors.git#5ddce7f677c766b82cc83a74415e544260f237f4"
+  resolved "git+ssh://git@github.com:cmburcus/util_Errors.git#2788ccc40a2c3a7257d3c4feb49e20f7e69652e7"
   dependencies:
     objection "1.1.10"
 

@@ -91,8 +91,8 @@ describe('TESTING: addPagination', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are null', async () => {
@@ -106,8 +106,8 @@ describe('TESTING: addPagination', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are arrays', async () => {
@@ -121,8 +121,8 @@ describe('TESTING: addPagination', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are objects', async () => {
@@ -136,7 +136,7 @@ describe('TESTING: addPagination', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('pagination');
   });
 });

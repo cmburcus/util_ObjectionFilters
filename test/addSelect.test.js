@@ -55,8 +55,8 @@ describe('TESTING: addSelect', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('select');
   });
 
   it('it should fail if the select is specified but is null', async () => {
@@ -70,8 +70,8 @@ describe('TESTING: addSelect', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('select');
   });
 
   it('it should fail if the select is specified but is a number', async () => {
@@ -85,8 +85,8 @@ describe('TESTING: addSelect', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('select');
   });
 
   it('it should fail if the select is specified but is an array', async () => {
@@ -100,8 +100,8 @@ describe('TESTING: addSelect', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('select');
   });
 
   it('it should fail if the select is specified but is an object', async () => {
@@ -115,7 +115,7 @@ describe('TESTING: addSelect', () => {
 
     expect(result).to.be.an('error');
     expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('name').equal('InvalidArgumentError');
-    expect(result).to.have.property('statusCode').equal(400);
+    expect(result).to.have.property('status').equal(400);
+    expect(result).to.have.property('error').equal('select');
   });
 });
