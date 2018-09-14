@@ -88,7 +88,10 @@ module.exports = {
     }
 
     // We need at least one column name
-    const querySplit = selectString.trim().split(',').filter((column) => (column.length > 0));
+    const querySplit = selectString
+      .trim()
+      .split(',')
+      .filter((column) => column.length > 0);
 
     if (querySplit.length === 0) {
       throw errorUtil.getInvalidArgumentError('select');
@@ -142,11 +145,11 @@ module.exports = {
 
       const filterError = getInvalidFilterString(
         filters[index].column,
-          filters[index].value,
-          filters[index].operator,
-          operator,
-          range,
-          index
+        filters[index].value,
+        filters[index].operator,
+        operator,
+        range,
+        index
       );
 
       if (filterError) {
@@ -235,7 +238,8 @@ module.exports = {
     }
 
     const isPageInvalid = (typeof page !== 'number' && typeof page !== 'string') || page <= 0;
-    const isPageSizeInvalid = (typeof pageSize !== 'number' && typeof pageSize !== 'string') || pageSize <= 0;
+    const isPageSizeInvalid =
+      (typeof pageSize !== 'number' && typeof pageSize !== 'string') || pageSize <= 0;
 
     if (isPageInvalid || isPageSizeInvalid) {
       throw errorUtil.getInvalidArgumentError('pagination');
@@ -243,5 +247,5 @@ module.exports = {
 
     // Page - 1 as objection page starts at 0
     return queryBuilder.page(page - 1, pageSize);
-  }
+  },
 };

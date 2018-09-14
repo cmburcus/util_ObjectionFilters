@@ -23,7 +23,10 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(0);
   });
 
   it('it should fail if filter is not valid JSON', async () => {
@@ -38,9 +41,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should fail if filter is specified but is null', async () => {
@@ -53,9 +62,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should fail if filter is specified but is a number', async () => {
@@ -68,9 +83,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should fail if filter is specified but is an array', async () => {
@@ -83,9 +104,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should fail if filter is specified but is an object', async () => {
@@ -98,9 +125,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should fail if filter is not a json array', async () => {
@@ -118,9 +151,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter');
   });
 
   it('it should add filter operation as equals if filter is specified but no operator is passed', async () => {
@@ -140,11 +179,25 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter operation using the gt operator', async () => {
@@ -165,12 +218,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('>');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('>');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the gte operator', async () => {
@@ -191,12 +261,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('>=');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('>=');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the lt operator', async () => {
@@ -217,12 +304,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('<');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('<');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the lte operator', async () => {
@@ -243,12 +347,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('<=');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('<=');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the ne operator', async () => {
@@ -269,12 +390,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('!=');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('!=');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the eq operator', async () => {
@@ -295,12 +433,29 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('=');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('=');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should add filter using the like operator', async () => {
@@ -321,13 +476,32 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].args[0]._sql').be.a('string').and.equal('LOWER(id)');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('like');
-    expect(result).to.have.nested.property('_operations[0].args[2]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]._sql')
+      .be.a('string')
+      .and.equal('LOWER(id)');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('like');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[2]')
+      .be.a('string')
+      .and.equal('my value');
   });
 
   it('it should fail if an invalid operator is specified', async () => {
@@ -348,9 +522,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter[0].operator');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter[0].operator');
   });
 
   it('it should fail if attempting like on a non string column', async () => {
@@ -371,9 +551,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter[0].value');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter[0].value');
   });
 
   it('it should allow for multiple filters to be specified', async () => {
@@ -403,24 +589,68 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].args[0]._sql').be.a('string').and.equal('LOWER(column_two)');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.a('string').and.equal('like');
-    expect(result).to.have.nested.property('_operations[1].args[2]').be.a('string').and.equal('myva%');
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]._sql')
+      .be.a('string')
+      .and.equal('LOWER(column_two)');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.a('string')
+      .and.equal('like');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[2]')
+      .be.a('string')
+      .and.equal('myva%');
 
-    expect(result).to.have.nested.property('_operations[2]').be.an('object');
-    expect(result).to.have.nested.property('_operations[2].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[2].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[2].args[1]').be.a('string').and.equal('>=');
-    expect(result).to.have.nested.property('_operations[2].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[2]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[2].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[2].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[2].args[1]')
+      .be.a('string')
+      .and.equal('>=');
+    expect(result)
+      .to.have.nested.property('_operations[2].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should fail if column is not specified', async () => {
@@ -440,9 +670,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter[0].column');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter[0].column');
   });
 
   it('it should fail if value is not specified', async () => {
@@ -461,9 +697,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter[0].value');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter[0].value');
   });
 
   it('it should allow "and" condition', async () => {
@@ -489,17 +731,45 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('andWhere');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.a('string').and.equal('=');
-    expect(result).to.have.nested.property('_operations[1].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('andWhere');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.a('string')
+      .and.equal('=');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should allow "and" condition with no operator', async () => {
@@ -524,16 +794,41 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('andWhere');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('andWhere');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should allow "or" condition', async () => {
@@ -559,17 +854,45 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('orWhere');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.a('string').and.equal('=');
-    expect(result).to.have.nested.property('_operations[1].args[2]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('orWhere');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.a('string')
+      .and.equal('=');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[2]')
+      .be.a('number')
+      .and.equal(1);
   });
 
   it('it should allow "in" condition', async () => {
@@ -579,7 +902,7 @@ describe('TESTING: addFilter', () => {
       {
         column: 'id',
         range: 'in',
-        value: [1,2,3],
+        value: [1, 2, 3],
       },
     ];
 
@@ -590,14 +913,37 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('whereIn');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[0].args[1][1]').be.a('number').and.equal(2);
-    expect(result).to.have.nested.property('_operations[0].args[1][2]').be.a('number').and.equal(3);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('whereIn');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][1]')
+      .be.a('number')
+      .and.equal(2);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][2]')
+      .be.a('number')
+      .and.equal(3);
   });
 
   it('it should fail if value is not an array for "in"', async () => {
@@ -618,9 +964,15 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('filter[0].value');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('filter[0].value');
   });
 
   it('it should allow "orIn" condition', async () => {
@@ -634,7 +986,7 @@ describe('TESTING: addFilter', () => {
       {
         column: 'id',
         range: 'orIn',
-        value: [1,2,3],
+        value: [1, 2, 3],
       },
     ];
 
@@ -645,19 +997,53 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('orWhereIn');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[1].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[1].args[1][1]').be.a('number').and.equal(2);
-    expect(result).to.have.nested.property('_operations[1].args[1][2]').be.a('number').and.equal(3);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('orWhereIn');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][1]')
+      .be.a('number')
+      .and.equal(2);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][2]')
+      .be.a('number')
+      .and.equal(3);
   });
 
   it('it should allow "notIn" condition', async () => {
@@ -667,7 +1053,7 @@ describe('TESTING: addFilter', () => {
       {
         column: 'id',
         range: 'notIn',
-        value: [1,2,3],
+        value: [1, 2, 3],
       },
     ];
 
@@ -678,14 +1064,37 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('whereNotIn');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[0].args[1][1]').be.a('number').and.equal(2);
-    expect(result).to.have.nested.property('_operations[0].args[1][2]').be.a('number').and.equal(3);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('whereNotIn');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][1]')
+      .be.a('number')
+      .and.equal(2);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][2]')
+      .be.a('number')
+      .and.equal(3);
   });
 
   it('it should allow "orNotIn" condition', async () => {
@@ -699,7 +1108,7 @@ describe('TESTING: addFilter', () => {
       {
         column: 'id',
         range: 'orNotIn',
-        value: [1,2,3],
+        value: [1, 2, 3],
       },
     ];
 
@@ -710,19 +1119,53 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('orWhereNotIn');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[1].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[1].args[1][1]').be.a('number').and.equal(2);
-    expect(result).to.have.nested.property('_operations[1].args[1][2]').be.a('number').and.equal(3);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('orWhereNotIn');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][1]')
+      .be.a('number')
+      .and.equal(2);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][2]')
+      .be.a('number')
+      .and.equal(3);
   });
 
   it('it should allow "between" condition', async () => {
@@ -743,13 +1186,33 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('whereBetween');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[0].args[1][1]').be.a('number').and.equal(5);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('whereBetween');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][1]')
+      .be.a('number')
+      .and.equal(5);
   });
 
   it('it should allow "orBetween" condition', async () => {
@@ -774,18 +1237,49 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('number').and.equal(1);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('number')
+      .and.equal(1);
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('orWhereBetween');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[1].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[1].args[1][1]').be.a('number').and.equal(5);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('orWhereBetween');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][1]')
+      .be.a('number')
+      .and.equal(5);
   });
 
   it('it should allow "notBetween" condition', async () => {
@@ -806,13 +1300,33 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('whereNotBetween');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[0].args[1][1]').be.a('number').and.equal(5);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('whereNotBetween');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1][1]')
+      .be.a('number')
+      .and.equal(5);
   });
 
   it('it should allow "orNotBetween" condition', async () => {
@@ -837,17 +1351,48 @@ describe('TESTING: addFilter', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('where');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('my value');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('where');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('my value');
 
-    expect(result).to.have.nested.property('_operations[1]').be.an('object');
-    expect(result).to.have.nested.property('_operations[1].name').be.a('string').and.equal('orWhereNotBetween');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[1].args[1]').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[1].args[1][0]').be.a('number').and.equal(1);
-    expect(result).to.have.nested.property('_operations[1].args[1][1]').be.a('number').and.equal(5);
+    expect(result)
+      .to.have.nested.property('_operations[1]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.a('string')
+      .and.equal('orWhereNotBetween');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1]')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][0]')
+      .be.a('number')
+      .and.equal(1);
+    expect(result)
+      .to.have.nested.property('_operations[1].args[1][1]')
+      .be.a('number')
+      .and.equal(5);
   });
 });

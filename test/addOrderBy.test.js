@@ -23,7 +23,10 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(0);
   });
 
   it('it should add ASC by default', async () => {
@@ -36,11 +39,25 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('orderBy');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('ASC');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('orderBy');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('ASC');
   });
 
   it('it should order the results in ASC if the order parameter is specified as ASC', async () => {
@@ -53,11 +70,25 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('orderBy');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('ASC');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('orderBy');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('ASC');
   });
 
   it('it should order the results in DESC if the order parameter is specified as DESC', async () => {
@@ -70,11 +101,25 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('orderBy');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('column_one');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('DESC');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('orderBy');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('column_one');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('DESC');
   });
 
   it('it should fail if the order direction is not a valid value', async () => {
@@ -87,9 +132,15 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 
   it('it should fail if the order is specified but is empty', async () => {
@@ -102,9 +153,15 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 
   it('it should fail if the order is specified but is null', async () => {
@@ -117,9 +174,15 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 
   it('it should fail if the order is specified but is a number', async () => {
@@ -132,9 +195,15 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 
   it('it should fail if the order is specified but is an array', async () => {
@@ -147,9 +216,15 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 
   it('it should fail if the order is specified but is an object', async () => {
@@ -162,8 +237,14 @@ describe('TESTING: addOrderBy', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('order');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('order');
   });
 });

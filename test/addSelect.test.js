@@ -23,7 +23,10 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(0);
   });
 
   it('it should add a select operation', async () => {
@@ -36,12 +39,29 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(1);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.a('string').and.equal('select');
-    expect(result).to.have.nested.property('_operations[0].args').be.an('array').and.have.lengthOf(2);
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('string').and.equal('id');
-    expect(result).to.have.nested.property('_operations[0].args[1]').be.a('string').and.equal('column_two');
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(1);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.a('string')
+      .and.equal('select');
+    expect(result)
+      .to.have.nested.property('_operations[0].args')
+      .be.an('array')
+      .and.have.lengthOf(2);
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('string')
+      .and.equal('id');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[1]')
+      .be.a('string')
+      .and.equal('column_two');
   });
 
   it('it should fail if the select is specified but is empty', async () => {
@@ -54,9 +74,15 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('select');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('select');
   });
 
   it('it should fail if the select is specified but is null', async () => {
@@ -69,9 +95,15 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('select');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('select');
   });
 
   it('it should fail if the select is specified but is a number', async () => {
@@ -84,9 +116,15 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('select');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('select');
   });
 
   it('it should fail if the select is specified but is an array', async () => {
@@ -99,9 +137,15 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('select');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('select');
   });
 
   it('it should fail if the select is specified but is an object', async () => {
@@ -114,8 +158,14 @@ describe('TESTING: addSelect', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('select');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('select');
   });
 });

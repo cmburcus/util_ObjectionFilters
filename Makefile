@@ -14,19 +14,19 @@ RESET=\033[0m
 
 # Starts the environment but doesn't run the tests
 .PHONY: build
-build: start-env install-dependencies migrate-database
+build: start install-dependencies migrate-database
 
 # Starts the environment, runs the tests and then closes the environment
 .PHONY: test
-test: build run-tests stop-env
+test: build run-tests stop
 
 #########################
 # STARTING ENVIRONMENTS
 #########################
 
 # Builds the container for development
-.PHONY: start-env
-start-env:
+.PHONY: start
+start:
 	echo "$(GREEN)\n--- Starting development environment...\n$(GRAY)"
 	docker-compose up -d --build
 
@@ -35,8 +35,8 @@ start-env:
 #########################
 
 # Stops the container for development
-.PHONY: stop-env
-stop-env:
+.PHONY: stop
+stop:
 	echo "$(GREEN)\n--- Stopping development environment...\n$(GRAY)"
 	docker-compose down -v --remove-orphans
 
@@ -45,8 +45,8 @@ stop-env:
 #########################
 
 # Removes the images and volumes for development
-.PHONY: clean-env
-clean-env:
+.PHONY: clean
+clean:
 	echo "$(GREEN)\n--- Removing development docker images and volumes...\n$(GRAY)"
 	docker-compose down -v --remove-orphans --rmi all
 
@@ -78,7 +78,7 @@ logs:
 
 # Formats the code with ESLint and Prettier. Will manage container boot
 .PHONY: format
-format: start-env install-dependencies
+format: start install-dependencies
 	echo "$(GREEN)\n---  Formatting code...\n$(RESET)"
 	docker-compose exec $(NODE_BIN) yarn format
 	echo "$(GREEN)\n--- Stopping development environment...\n$(GRAY)"

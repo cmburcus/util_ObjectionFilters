@@ -6,6 +6,6 @@ const Model = class Model extends ObjectionModel {
   static get tableName() {
     return 'test';
   }
-}
+};
 
 module.exports = Model;

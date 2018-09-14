@@ -23,7 +23,10 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(0);
   });
 
   it('it should paginate the operation if params are numbers', async () => {
@@ -36,12 +39,29 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.an('string').and.equal('limit');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('number').and.equal(50);
-    expect(result).to.have.nested.property('_operations[1].name').be.an('string').and.equal('offset');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('number').and.equal(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.an('string')
+      .and.equal('limit');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('number')
+      .and.equal(50);
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.an('string')
+      .and.equal('offset');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('number')
+      .and.equal(0);
   });
 
   it('it should paginate the operation if params are strings', async () => {
@@ -54,12 +74,29 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.an('string').and.equal('limit');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('number').and.equal(50);
-    expect(result).to.have.nested.property('_operations[1].name').be.an('string').and.equal('offset');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('number').and.equal(0);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.an('string')
+      .and.equal('limit');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('number')
+      .and.equal(50);
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.an('string')
+      .and.equal('offset');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('number')
+      .and.equal(0);
   });
 
   it('it should allow to get different pages', async () => {
@@ -72,12 +109,29 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('object');
-    expect(result).to.have.property('_operations').be.an('array').and.have.lengthOf(3);
-    expect(result).to.have.nested.property('_operations[0]').be.an('object');
-    expect(result).to.have.nested.property('_operations[0].name').be.an('string').and.equal('limit');
-    expect(result).to.have.nested.property('_operations[0].args[0]').be.a('number').and.equal(50);
-    expect(result).to.have.nested.property('_operations[1].name').be.an('string').and.equal('offset');
-    expect(result).to.have.nested.property('_operations[1].args[0]').be.a('number').and.equal(200);
+    expect(result)
+      .to.have.property('_operations')
+      .be.an('array')
+      .and.have.lengthOf(3);
+    expect(result)
+      .to.have.nested.property('_operations[0]')
+      .be.an('object');
+    expect(result)
+      .to.have.nested.property('_operations[0].name')
+      .be.an('string')
+      .and.equal('limit');
+    expect(result)
+      .to.have.nested.property('_operations[0].args[0]')
+      .be.a('number')
+      .and.equal(50);
+    expect(result)
+      .to.have.nested.property('_operations[1].name')
+      .be.an('string')
+      .and.equal('offset');
+    expect(result)
+      .to.have.nested.property('_operations[1].args[0]')
+      .be.a('number')
+      .and.equal(200);
   });
 
   it('it should fail if page is defined but pageSize is not', async () => {
@@ -90,9 +144,15 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('pagination');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are null', async () => {
@@ -105,9 +165,15 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('pagination');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are arrays', async () => {
@@ -120,9 +186,15 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('pagination');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('pagination');
   });
 
   it('it should fail if page or pageSize are specified but are objects', async () => {
@@ -135,8 +207,14 @@ describe('TESTING: addPagination', () => {
     }
 
     expect(result).to.be.an('error');
-    expect(result).to.have.property('type').equal('InvalidArgumentError');
-    expect(result).to.have.property('status').equal(400);
-    expect(result).to.have.property('error').equal('pagination');
+    expect(result)
+      .to.have.property('type')
+      .equal('InvalidArgumentError');
+    expect(result)
+      .to.have.property('status')
+      .equal(400);
+    expect(result)
+      .to.have.property('error')
+      .equal('pagination');
   });
 });
