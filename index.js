@@ -25,7 +25,7 @@ const raw = require('objection').raw;
  */
 function getSanitizedCondtion(column, operator, value, conditionIndex) {
   if (operator === operators.like && typeof value !== 'string') {
-    errorUtil.throwInvalidArgumentError(`filter[${conditionIndex}].value`);
+    throw errorUtil.getInvalidArgumentError(`filter[${conditionIndex}].value`);
   }
 
   if (operator === operators.like) {
@@ -84,14 +84,14 @@ module.exports = {
     }
 
     if (typeof selectString !== 'string') {
-      errorUtil.throwInvalidArgumentError('select');
+      throw errorUtil.getInvalidArgumentError('select');
     }
 
     // We need at least one column name
     const querySplit = selectString.trim().split(',').filter((column) => (column.length > 0));
 
     if (querySplit.length === 0) {
-      errorUtil.throwInvalidArgumentError('select');
+      throw errorUtil.getInvalidArgumentError('select');
     }
 
     return queryBuilder.select(selectString.split(','));
@@ -123,12 +123,12 @@ module.exports = {
     try {
       filters = JSON.parse(filterString);
     } catch (error) {
-      errorUtil.throwInvalidArgumentError('filter');
+      throw errorUtil.getInvalidArgumentError('filter');
     }
 
     // The parsed json has to be an array
     if (!Array.isArray(filters)) {
-      errorUtil.throwInvalidArgumentError('filter');
+      throw errorUtil.getInvalidArgumentError('filter');
     }
 
     for (let index = 0; index < filters.length; index++) {
@@ -150,7 +150,7 @@ module.exports = {
       );
 
       if (filterError) {
-        errorUtil.throwInvalidArgumentError(filterError);
+        throw errorUtil.getInvalidArgumentError(filterError);
       }
 
       // Function to append to the query. By default it will be 'where'
@@ -197,14 +197,14 @@ module.exports = {
     }
 
     if (typeof orderByString !== 'string') {
-      errorUtil.throwInvalidArgumentError('order');
+      throw errorUtil.getInvalidArgumentError('order');
     }
 
     // We need at least the column name
     const querySplit = orderByString.split(',');
 
     if (querySplit.length === 0 || querySplit[0].trim() === '') {
-      errorUtil.throwInvalidArgumentError('order');
+      throw errorUtil.getInvalidArgumentError('order');
     }
 
     // Checking for valid order direction if one was passed
@@ -215,7 +215,7 @@ module.exports = {
 
       // If the order direction is incorrect, we'll throw an error
       if (orderDirection !== order.asc && orderDirection !== order.desc) {
-        errorUtil.throwInvalidArgumentError('order');
+        throw errorUtil.getInvalidArgumentError('order');
       }
     }
 
@@ -238,7 +238,7 @@ module.exports = {
     const isPageSizeInvalid = (typeof pageSize !== 'number' && typeof pageSize !== 'string') || pageSize <= 0;
 
     if (isPageInvalid || isPageSizeInvalid) {
-      errorUtil.throwInvalidArgumentError('pagination');
+      throw errorUtil.getInvalidArgumentError('pagination');
     }
 
     // Page - 1 as objection page starts at 0
