@@ -10,7 +10,7 @@
     "format": "eslint --quiet --report-unused-disable-directives --fix '**/*.js' || true"
   },
   "dependencies": {
-    "error-util": "git+ssh://git@github.com:cmburcus/util_Errors.git",
+    "error-util": "git+ssh://git@github.com:cmburcus/util_Errors.git#v1.0",
     "objection": "1.1.10"
   },
   "devDependencies": {
