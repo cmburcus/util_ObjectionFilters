@@ -1,3 +1,5 @@
+:warning: `This project is no longer in active development. It was a way for me to try out new tools.`
+
 ![CMB](logo.png "Corado M. Burcus")
 
 ## Objection Filters Util
